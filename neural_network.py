@@ -104,7 +104,7 @@ class NeuralNetwork:
         print("... starting training")
         for e in range(max_epochs+1):
             if descent_type == "sgd":
-                # implement variable learning rate
+                # Comments: implementation of variable learning rate
                 # For formula see http://www.deeplearningbook.org/contents/optimization.html
                 alpha = e/(max_epochs * 1.5)
                 var_learning_rate = (1-alpha)*learning_rate + alpha * (1 / (max_epochs * 1.5))*learning_rate
@@ -181,7 +181,7 @@ class NeuralNetwork:
                     #      both results should be epsilon close
                     #      to each other!
                     # TODO ####################################
-                    epsilon = 1e-6
+                    epsilon = 1e-4
                     # making sure your gradient checking routine itself
                     # has no errors can be a bit tricky. To debug it
                     # you can "cheat" by using scipy which implements
@@ -193,7 +193,7 @@ class NeuralNetwork:
                     #loss_base = output_given_params(param_init)
                     # TODO this should hold the gradient as calculated through bprop
                     gparam_bprop = grad_given_params(param_init)
-                    print("gparam_bprop: {}".format(gparam_bprop))
+                    #print("gparam_bprop: {}".format(gparam_bprop))
                     # TODO this should hold the gradient calculated through
                     #      finite differences
                     gparam_fd = []
@@ -205,7 +205,7 @@ class NeuralNetwork:
                         loss_plus_eps = output_given_params(param_init_eps_plus)
                         loss_min_eps = output_given_params(param_init_eps_min)
                         gparam_fd.append((loss_plus_eps - loss_min_eps)/(2*epsilon))
-                    print("gparam_fd: {}".format(gparam_fd))
+                    #print("gparam_fd: {}".format(gparam_fd))
                     # calculate difference between them
                     err = np.mean(np.abs(gparam_bprop - gparam_fd))
                     print('diff {:.2e}'.format(err))

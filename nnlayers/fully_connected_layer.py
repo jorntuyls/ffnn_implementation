@@ -45,14 +45,7 @@ class FullyConnectedLayer(Layer, Parameterized):
         # implementation below!
         self.last_input = input
         # FIXME
-        # print("begin fprop")
-        #print(input)
-        #print(self.W)
-        #print(self.b)
-        # print(input.dot(self.W))
         z = np.dot(input,self.W) + self.b
-        # print(z)
-        # print("end fprop")
         if self.activation_fun:
             return self.activation_fun.fprop(z)
         return z
@@ -66,7 +59,6 @@ class FullyConnectedLayer(Layer, Parameterized):
         # HINT: you may have to divide the weights by n
         #       to make gradient checking work
         #       (since you want to divide the loss by number of inputs)
-        #print(output_grad.shape)
         n = output_grad.shape[0]
         # accumulate gradient wrt. the parameters first
         # we will need to store these to later update
@@ -76,23 +68,15 @@ class FullyConnectedLayer(Layer, Parameterized):
 
         # convert the gradient on the layer's output into a gradient in the
         #       prenonlinearity activation
-        #print("begin bprop")
-        #print(self.W)
-        #print(self.b)
 
         if self.activation_fun:
             output_grad = self.activation_fun.bprop(output_grad)
         # TODO For now there is no regularization term used
         self.dW = self.last_input.transpose().dot(output_grad) / n #FIXME
         self.db = np.sum(output_grad, axis=0) / n #FIXME
-        #print(self.dW.shape)
-        #print(self.db.shape)
 
         # the gradient wrt. the input should be calculated here
         grad_input = output_grad.dot(self.W.transpose())
-        #print(grad_input.shape)
-        #print(self.last_input.shape)
-        #print("end bprop")
         return grad_input
 
     def params(self):
@@ -104,7 +88,3 @@ class FullyConnectedLayer(Layer, Parameterized):
     def update_params(self, learning_rate):
         self.W = self.W - learning_rate * self.dW
         self.b = self.b - learning_rate * self.db
-        #print("WWWWWWWWWWW")
-        #print(self.W)
-        #print("bbbbbbbbbbb")
-        #print(self.b)

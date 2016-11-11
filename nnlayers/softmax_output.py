@@ -41,14 +41,12 @@ class SoftmaxOutput(Layer, Loss):
         # HINT: since this would involve taking the log
         #       of the softmax (which is np.exp(x)/np.sum(x, axis=1))
         #       this gradient computation can be simplified a lot!
-        #print("Y: {}".format(Y))
-        #print("Y_pred: {}".format(Y_pred))
         return Y_pred - Y
 
     def loss(self, Y, Y_pred):
         # Assume one-hot encoding of Y
         # calculate softmax first
-        out = softmax(Y_pred)
+        # out = softmax(Y_pred)
         # to make the loss numerically stable
         # you may want to add an epsilon in the log ;)
         # explanation: softmax can go to 0 en so log to -infinity??
@@ -56,6 +54,5 @@ class SoftmaxOutput(Layer, Loss):
         # TODO ####################################
         # calculate negative log likelihood
         # TODO ####################################
-        #print("Out: {}".format(out))
         loss = np.sum(-np.log(Y_pred) * Y, axis=1) #FIXME
         return np.mean(loss)
