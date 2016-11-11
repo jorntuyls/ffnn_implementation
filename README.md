@@ -14,14 +14,14 @@ pip install -r requirements.txt
 
 1. Open python editor (e.x. jupyter notebook)
 2. Import run_mnist.py
+3. Train neural network
+4. Compute test error and show images that are classified right and wrong
 ```
 import run_mnist as r
 ```
-3. Train neural network
 ```
 nn = r.train_mnist(0.7,100,100)
 ```
-4. Compute test error and show images that are classified right and wrong
 ```
 r.test_mnist(nn)
 ```
