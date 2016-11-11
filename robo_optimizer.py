@@ -7,7 +7,6 @@ import numpy as np
 from robo.fmin import fmin
 from ffnn_implementation.nnlayers import InputLayer, FullyConnectedLayer, LinearOutput, Activation, SoftmaxOutput
 from ffnn_implementation.neural_network import NeuralNetwork
-import numpy as np
 from ffnn_implementation.mnist import mnist
 
 # load mnist data
