@@ -126,7 +126,7 @@ class NeuralNetwork:
             if type(X_val) is np.ndarray and type(Y_val) is np.ndarray:
                 validation_loss = self._loss(X_val, one_hot(Y_val))
                 validation_error = self.classification_error(X_val, Y_val)
-                print('Validation: epoch {:.4f}, loss {:.4f}, train error {:.4f}'.format(e, validation_loss, validation_error))
+                print('Validation: epoch {:.4f}, loss {:.4f}, validation error {:.4f}'.format(e, validation_loss, validation_error))
         print("Validation error: {}".format(validation_error))
         return validation_error
 
