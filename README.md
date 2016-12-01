@@ -5,7 +5,7 @@ Build for course assignment at university of Freiburg: [GitHub Page](https://git
 ## Installation
 
 1. Clone repository
-3. install requirements
+3. install requirements (! use python 2.7)
 ```
 pip install -r requirements.txt
 ```
